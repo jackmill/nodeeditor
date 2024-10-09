@@ -56,9 +56,9 @@ bool DataFlowGraphModel::connectionExists(ConnectionId const connectionId) const
     return (_connectivity.find(connectionId) != _connectivity.end());
 }
 
-NodeId DataFlowGraphModel::addNode(QString const nodeType)
+NodeId DataFlowGraphModel::addNode(QString const &nodeType, const std::shared_ptr<NodeData>& data)
 {
-    std::unique_ptr<NodeDelegateModel> model = _registry->create(nodeType);
+    std::unique_ptr<NodeDelegateModel> model = _registry->create(nodeType, data);
 
     if (model) {
         NodeId newId = newNodeId();
@@ -464,7 +464,8 @@ void DataFlowGraphModel::loadNode(QJsonObject const &nodeJson)
 
     QString delegateModelName = internalDataJson["model-name"].toString();
 
-    std::unique_ptr<NodeDelegateModel> model = _registry->create(delegateModelName);
+    // TODO: Figure this out
+    std::unique_ptr<NodeDelegateModel> model = _registry->create(delegateModelName, {});
 
     if (model) {
         connect(model.get(),

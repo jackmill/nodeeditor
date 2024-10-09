@@ -10,6 +10,11 @@ NodeDelegateModel::NodeDelegateModel()
     // Derived classes can initialize specific style here
 }
 
+NodeDelegateModel::NodeDelegateModel(const std::shared_ptr<NodeData> &ctor_data)
+        : NodeDelegateModel() {
+
+}
+
 QJsonObject NodeDelegateModel::save() const
 {
     QJsonObject modelJson;

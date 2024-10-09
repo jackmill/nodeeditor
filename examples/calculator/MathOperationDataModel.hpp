@@ -23,6 +23,7 @@ class MathOperationDataModel : public NodeDelegateModel
     Q_OBJECT
 
 public:
+    explicit MathOperationDataModel(const std::shared_ptr<NodeData>& ctor_data) : NodeDelegateModel() {}
     ~MathOperationDataModel() = default;
 
 public:

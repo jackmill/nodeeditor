@@ -22,7 +22,7 @@ class NODE_EDITOR_PUBLIC NodeDelegateModelRegistry
 {
 public:
     using RegistryItemPtr = std::unique_ptr<NodeDelegateModel>;
-    using RegistryItemCreator = std::function<RegistryItemPtr()>;
+    using RegistryItemCreator = std::function<RegistryItemPtr(const std::shared_ptr<NodeData>& data)>;
     using RegisteredModelCreatorsMap = std::unordered_map<QString, RegistryItemCreator>;
     using RegisteredModelsCategoryMap = std::unordered_map<QString, QString>;
     using CategoriesSet = std::set<QString>;
@@ -54,7 +54,7 @@ public:
     template<typename ModelType>
     void registerModel(QString const &category = "Nodes")
     {
-        RegistryItemCreator creator = []() { return std::make_unique<ModelType>(); };
+        RegistryItemCreator creator = [](const std::shared_ptr<NodeData>& data) { return std::make_unique<ModelType>(data); };
         registerModel<ModelType>(std::move(creator), category);
     }
 
@@ -94,7 +94,7 @@ public:
 
 #endif
 
-    std::unique_ptr<NodeDelegateModel> create(QString const &modelName);
+    std::unique_ptr<NodeDelegateModel> create(QString const &modelName, const std::shared_ptr<NodeData>& data);
 
     RegisteredModelCreatorsMap const &registeredModelCreators() const;
 
@@ -141,9 +141,9 @@ private:
     }
 
     template<typename ModelType>
-    static QString computeName(std::false_type, RegistryItemCreator const &creator)
+    static QString computeName(std::false_type, RegistryItemCreator const &creator, const std::shared_ptr<NodeData>& data = {})
     {
-        return creator()->name();
+        return creator(data)->name();
     }
 
     template<typename T>

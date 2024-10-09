@@ -13,6 +13,7 @@
 class AdditionModel : public MathOperationDataModel
 {
 public:
+    explicit AdditionModel(const std::shared_ptr<NodeData>& ctor_data) : MathOperationDataModel(ctor_data) {}
     ~AdditionModel() = default;
 
 public:

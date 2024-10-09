@@ -26,6 +26,7 @@ class NODE_EDITOR_PUBLIC NodeDelegateModel : public QObject, public Serializable
 
 public:
     NodeDelegateModel();
+    explicit NodeDelegateModel(const std::shared_ptr<NodeData>& ctor_data);
 
     virtual ~NodeDelegateModel() = default;
 

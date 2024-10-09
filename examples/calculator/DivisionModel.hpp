@@ -13,6 +13,7 @@
 class DivisionModel : public MathOperationDataModel
 {
 public:
+    explicit DivisionModel(const std::shared_ptr<NodeData>& ctor_data) : MathOperationDataModel(ctor_data) {}
     virtual ~DivisionModel() {}
 
 public:

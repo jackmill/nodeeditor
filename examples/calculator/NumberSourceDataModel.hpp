@@ -24,6 +24,7 @@ class NumberSourceDataModel : public NodeDelegateModel
 
 public:
     NumberSourceDataModel();
+    explicit NumberSourceDataModel(const std::shared_ptr<NodeData>& ctor_data) : NumberSourceDataModel() {}
 
     virtual ~NumberSourceDataModel() {}
 

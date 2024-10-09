@@ -14,6 +14,8 @@
 
 namespace QtNodes {
 
+class NodeData;
+
 /**
  * The central class in the Model-View approach. It delivers all kinds
  * of information from the backing user data structures that represent
@@ -65,7 +67,7 @@ public:
    * model on its own, it helps to distinguish between possible node
    * types and create a correct instance inside.
    */
-    virtual NodeId addNode(QString const nodeType = QString()) = 0;
+    virtual NodeId addNode(QString const &nodeType = QString(), const std::shared_ptr<NodeData>& data = {}) = 0;
 
     /// Model decides if a conection with a given connection Id possible.
     /**

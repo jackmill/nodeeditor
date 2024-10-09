@@ -7,12 +7,12 @@ using QtNodes::NodeDataType;
 using QtNodes::NodeDelegateModel;
 using QtNodes::NodeDelegateModelRegistry;
 
-std::unique_ptr<NodeDelegateModel> NodeDelegateModelRegistry::create(QString const &modelName)
+std::unique_ptr<NodeDelegateModel> NodeDelegateModelRegistry::create(QString const &modelName, const std::shared_ptr<NodeData>& data)
 {
     auto it = _registeredItemCreators.find(modelName);
 
     if (it != _registeredItemCreators.end()) {
-        return it->second();
+        return it->second(data);
     }
 
     return nullptr;

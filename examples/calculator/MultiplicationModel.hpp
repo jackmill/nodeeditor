@@ -14,6 +14,7 @@
 class MultiplicationModel : public MathOperationDataModel
 {
 public:
+    explicit MultiplicationModel(const std::shared_ptr<NodeData>& ctor_data) : MathOperationDataModel(ctor_data) {}
     virtual ~MultiplicationModel() {}
 
 public:

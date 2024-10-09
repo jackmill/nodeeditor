@@ -24,6 +24,7 @@ class NumberDisplayDataModel : public NodeDelegateModel
 
 public:
     NumberDisplayDataModel();
+    explicit NumberDisplayDataModel(const std::shared_ptr<NodeData>& ctor_data) : NumberDisplayDataModel() {}
 
     ~NumberDisplayDataModel() = default;
 

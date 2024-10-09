@@ -14,6 +14,7 @@
 class SubtractionModel : public MathOperationDataModel
 {
 public:
+    explicit SubtractionModel(const std::shared_ptr<NodeData>& ctor_data) : MathOperationDataModel(ctor_data) {}
     virtual ~SubtractionModel() {}
 
 public:

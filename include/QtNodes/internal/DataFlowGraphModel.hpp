@@ -41,7 +41,7 @@ public:
 
     bool connectionExists(ConnectionId const connectionId) const override;
 
-    NodeId addNode(QString const nodeType) override;
+    NodeId addNode(QString const &nodeType, const std::shared_ptr<NodeData>& data) override;
 
     bool connectionPossible(ConnectionId const connectionId) const override;
 
