@@ -12,7 +12,7 @@ NodeDelegateModel::NodeDelegateModel()
 
 NodeDelegateModel::NodeDelegateModel(const std::shared_ptr<NodeData> &ctor_data)
         : NodeDelegateModel() {
-
+    Q_UNUSED(ctor_data)
 }
 
 QJsonObject NodeDelegateModel::save() const
